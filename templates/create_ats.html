@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create ATS-Friendly Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Inter', sans-serif;
+      background: url("{{ url_for('static', filename='images/pawel-czerwinski-T5VUBvCYqKk-unsplash.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    .container {
+      background: rgba(6, 117, 131, 0.574);
+      padding: 40px 30px;
+      max-width: 720px;
+      width: 90%;
+      border-radius: 16px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 600;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      font-weight: 600;
+      color: #333;
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 15px;
+      background-color: #fdfdfd;
+    }
+
+    input::placeholder, textarea::placeholder {
+      color: #999;
+    }
+
+    .btn {
+      margin-top: 20px;
+      width: 100%;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      background: linear-gradient(135deg, #667eea, #764ba2, #6dd5ed);
+      background-size: 300% 300%;
+      animation: gradientMove 5s ease infinite;
+      box-shadow: 0 6px 18px rgba(102, 126, 234, 0.4);
+      transition: transform 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.03);
+    }
+
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Create ATS-Friendly Resume</h2>
+    <form action="/create_ats" method="POST">
+      <div class="form-group">
+        <label>Full Name:</label>
+        <input type="text" name="name" placeholder="e.g., John Doe" required>
+      </div>
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" name="email" placeholder="e.g., john.doe@email.com" required>
+      </div>
+      <div class="form-group">
+        <label>Phone:</label>
+        <input type="text" name="phone" placeholder="e.g., +91 9876543210" required>
+      </div>
+      <div class="form-group">
+        <label>Professional Summary:</label>
+        <textarea name="summary" rows="4" placeholder="Briefly describe your experience, interests, and achievements..." required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Skills (comma-separated):</label>
+        <input type="text" name="skills" placeholder="e.g., Python, SQL, Machine Learning, Communication" required>
+      </div>
+      <div class="form-group">
+        <label>Education:</label>
+        <textarea name="education" rows="3" placeholder="e.g., B.E. Computer Engineering, XYZ University (2021 - 2025)" required></textarea>
+      </div>
+      <div class="form-group">
+        <label>Experience:</label>
+        <textarea name="experience" rows="4" placeholder="e.g., Intern at ABC Corp - Developed web applications using Flask and React.js"></textarea>
+      </div>
+      <div class="form-group">
+        <label>Certifications:</label>
+        <textarea name="certifications" rows="2" placeholder="e.g., AWS Certified Cloud Practitioner, Google Data Analytics Certificate"></textarea>
+      </div>
+
+      <button type="submit" class="btn">🚀 Generate Resume</button>
+    </form>
+  </div>
+</body>
+</html>
