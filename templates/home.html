@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% block content %}
+<body class="home-page">
+
+  <!-- Background Video -->
+  <video autoplay muted loop id="bg-video">
+    <source src="{{ url_for('static', filename='videos/background.mp4') }}" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Welcome Section -->
+  <main class="main-content">
+    <h1>Welcome {{ user.id if user.is_authenticated else 'System Slinger' }}</h1>
+    <p>Start predicting your placement chances with our intelligent system.</p>
+    <a href="{{ url_for('input_page') }}">
+      <button class="start-btn">Start Prediction</button>
+    </a>
+  </main>
+
+  <!-- ATS Options -->
+  <div class="ats-options">
+    <a href="{{ url_for('check_ats') }}" class="ats-btn">Check Resume ATS-Friendliness</a>
+    <a href="{{ url_for('create_ats') }}" class="ats-btn">Create ATS-Friendly Resume</a>
+  </div>
+
+  <!-- Walk-In Interviews & Job Opportunities (Moved Up) -->
+  <section class="job-opportunities">
+    <h2>📢 Walk-in Interviews & Current Openings</h2>
+    <div class="jobs-list">
+      <div class="job-card">
+        <h3>TCS Walk-In</h3>
+        <p><strong>Date:</strong> 15th June 2025</p>
+        <p><strong>Location:</strong> Pune</p>
+        <p><strong>Role:</strong> Java Developer</p>
+        <a href="https://www.tcs.com/careers" target="_blank">
+          <button class="apply-btn">Apply Now</button>
+        </a>
+      </div>
+      <div class="job-card">
+        <h3>Infosys Hiring</h3>
+        <p><strong>Apply By:</strong> 18th June 2025</p>
+        <p><strong>Role:</strong> Data Analyst (Freshers)</p>
+        <p><strong>Mode:</strong> Virtual</p>
+        <a href="https://www.infosys.com/careers" target="_blank">
+          <button class="apply-btn">Apply Now</button>
+        </a>
+      </div>
+      <div class="job-card">
+        <h3>Capgemini Walk-In</h3>
+        <p><strong>Date:</strong> 22nd June 2025</p>
+        <p><strong>Location:</strong> Bangalore</p>
+        <p><strong>Role:</strong> System Engineer</p>
+        <a href="https://www.capgemini.com/careers" target="_blank">
+          <button class="apply-btn">Apply Now</button>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Role Cards -->
+  <section class="roles-grid">
+    {% for role in ['Software Developer', 'Network Engineer', 'Database Administrator', 'IT Technician', 'Systems Administrator', 'Web Developer', 'Cybersecurity Analyst', 'Data Scientist', 'Cloud Engineer', 'IT Project Manager','AI/ML Engineer','DevOps Engineer'] %}
+    <div class="role-card">
+      <a href="{{ url_for('input_page', role=role|lower|replace(' ', '_')) }}">
+        <h3>{{ role }}</h3>
+      </a>
+    </div>
+    {% endfor %}
+  </section>
+
+</body>
+{% endblock %}
