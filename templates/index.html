@@ -1,0 +1,18 @@
+<html>
+    <head><link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"></head>
+{% extends "base.html" %}
+{% block content %}
+<h1>Welcome {{user.id if user.is_authenticated else 'Guest' }}</h1>
+<p>This is your Hiring Predictor Home Page.</p>
+<a href="{{ url_for('input_page') }}">Go to Input Form</a>
+{% endblock %}
+<form action="/predict" method="post" enctype="multipart/form-data">
+    <label for="resume_file">Upload Resume (PDF or TXT):</label><br>
+    <input type="file" name="resume_file" accept=".pdf,.txt"><br><br>
+
+    <label for="cgpa">CGPA:</label>
+    <input type="number" step="0.01" name="cgpa" required><br><br>
+
+    <input type="submit" value="Predict Company">
+</form>
+</html>
