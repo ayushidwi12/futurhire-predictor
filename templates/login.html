@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login - Hiring Predictor</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+     <style>
+       body.login {
+    background: url("{{ url_for('static', filename='images/tridimensi-pro-Ot1bgRwZZUI-unsplash.jpg') }}") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Poppins', sans-serif;
+    color: #fff;
+    }
+     .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* semi-transparent black */
+    z-index: -1;}
+  </style>
+</head>
+<body class="login">
+    <h2>Login</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <p style="color: {% if category == 'success' %}green{% else %}red{% endif %};">{{ message }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    {% if error %}
+        <p style="color:red;">{{ error }}</p>
+    {% endif %}
+
+    <form method="POST" action="{{ url_for('login') }}" class="login-form">
+    <label>Username:</label><br>
+    <input type="text" name="username" required><br><br>
+
+    <label>Password:</label><br>
+    <input type="password" name="password" required><br><br>
+
+    <div class="button-center">
+        <button type="submit" class="animated-button">Login</button>
+    </div>
+</form>
+
+
+    <p>Don't have an account? <a href="{{ url_for('register') }}">Register here</a></p>
+    <br>
+    <form method="POST" action="{{ url_for('login') }}">
+        <input type="hidden" name="guest" value="yes">
+        <div class="button-center">
+        <button type="submit">Continue as Guest</button>
+        </div>
+    </form>
+</body>
+</html>
