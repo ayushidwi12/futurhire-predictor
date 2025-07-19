@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Prediction Input Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <style>
+        body.form-page {
+            background: url("{{ url_for('static', filename='images/pawel-czerwinski-rc9ZkXFNscI-unsplash.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            margin: 0;
+            padding: 0;
+            position: relative;
+        }
+
+        body.form-page::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(200, 196, 196, 0);
+            z-index: -1;
+        }
+
+        .form-wrapper {
+            background-color: rgba(214, 209, 209, 0.343);
+            color: #fcfdff;
+            padding: 30px;
+            margin: 40px auto;
+            border-radius: 12px;
+            max-width: 900px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .button-center {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        fieldset {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        legend {
+            font-weight: bold;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="file"],
+        input[type="text"],
+        input[type="number"],
+        select,
+        button {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button[type="button"] {
+            width: auto;
+            background-color: #007bff;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            padding: 8px 12px;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+
+<body class="form-page">
+    <div class="form-wrapper">
+        <h1>Candidate Information Form</h1>
+
+        <!-- Resume Parsing Form -->
+        <form action="{{ url_for('input_page') }}" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Resume</legend>
+                <label>Upload Resume (PDF or TXT):</label>
+                <input type="file" name="resume_file" accept=".pdf,.txt" required onchange="this.form.submit();">
+            </fieldset>
+        </form>
+
+        <!-- Certificate Parsing Form -->
+        <form action="{{ url_for('parse_certificates') }}" method="post" enctype="multipart/form-data">
+            <fieldset>
+                <legend>Certificates (Auto Parse)</legend>
+                <label>Upload Certificates (PDF):</label>
+                <input type="file" name="cert_file" accept=".pdf" multiple onchange="this.form.submit();">
+            </fieldset>
+        </form>
+
+        <!-- Main Prediction Form -->
+        <form id="predictionForm" action="{{ url_for('predict') }}" method="post" enctype="multipart/form-data">
+
+            <!-- Skills -->
+            <fieldset>
+                <legend>Skills</legend>
+                <label>Select Your Skills:</label>
+                <select name="skills[]" multiple size="10">
+                    {% for category, skills in {
+                        'Cloud Platforms': ['AWS', 'Azure', 'google cloud','Cloud Architecture','Cloud Computing',' Cloud Architecture','DevOps'],
+                        'Programming Languages': ['python','NLP','java', 'go', 'javascript', 'ruby', 'php','React','Spark','TensorFlow','JavaScript','Spring Boot',],
+                        'Database Management': ['sql', 'mysql', 'postgresql', 'oracle', 'mongodb', 'cassandra'],
+                        'Web Development Frameworks': ['django', 'flask', 'ruby on rails', 'node.js'],
+                        'API Development': ['restful apis', 'web services'],
+                        'Soft Skills': [
+                            'problem-solving', 'analytical thinking', 'attention to detail',
+                            'collaboration', 'teamwork', 'communication', 'adaptability',
+                            'time management', 'logical thinking', 'continuous learning',
+                            'leadership', 'mentoring'
+                        ]
+                    }.items() %}
+                        <optgroup label="{{ category }}">
+                            {% for skill in skills %}
+                                <option value="{{ skill | title }}" {% if skill in parsed_skills %}selected{% endif %}>{{ skill | title }}</option>
+                            {% endfor %}
+                        </optgroup>
+                    {% endfor %}
+                </select>
+            </fieldset>
+
+            <!-- Certificate Names -->
+            <fieldset>
+                <legend>Certificate Details</legend>
+                <label>Certificate Names (auto or manual):</label>
+                <input type="text" name="certificate_names" value="{{ certificate_names | join(', ') }}" placeholder="Certificate names...">
+            </fieldset>
+
+            <!-- Internship -->
+            <fieldset>
+                <legend>Internship</legend>
+                <label>Upload Internship Certificate (Optional):</label>
+                <input type="file" name="internship_certificate" accept=".pdf">
+            </fieldset>
+
+            <!-- Academics -->
+            <fieldset>
+                <legend>Academics</legend>
+
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <label>Aptitude Score (out of 10):</label>
+                    <input type="number" name="aptitude_score" placeholder="Auto filled after giving test" id="aptitude_score" min="0" max="10" step="0.1" readonly required>
+                    <button type="button" onclick="window.open('{{ url_for('aptitude_test') }}', '_blank', 'width=800,height=700')">Give Test</button>
+                </div>
+
+                <label>Upload BE Result PDF:</label>
+                <input type="file" name="be_result_file" accept=".pdf">
+
+                <label>CGPA:</label>
+                <input type="number" step="0.01" name="cgpa" id="cgpa" required>
+
+                <label>College Tier:</label>
+                <select name="college_tier" required>
+                    <option value="">-- Select --</option>
+                    <option value="IIT">IIT</option>
+                    <option value="NIT">NIT</option>
+                    <option value="SPPU">SPPU University</option>
+                    <option value="MU">Mumbai University</option>
+                    <option value="Private">Private B.Tech College</option>
+                    <option value="Other">Other</option>
+                </select>
+            </fieldset>
+
+            <!-- Experience -->
+            <fieldset>
+                <legend>Work Experience</legend>
+                <label>Experience Required (in years):</label>
+                <input type="number" step="0.1" min="0" name="experience_required" required>
+            </fieldset>
+
+            <!-- GATE -->
+            <fieldset>
+                <legend>GATE Qualification</legend>
+                <label>Qualified GATE?</label>
+                <select name="gate_qualified" id="gate_qualified" onchange="toggleGateFields(this.value)">
+                    <option value="No">No</option>
+                    <option value="Yes">Yes</option>
+                </select>
+
+                <div id="gate_fields" style="display:none;">
+                    <label>GATE Branch:</label>
+                    <select name="gate_branch">
+                        <option>Computer Science and Information Technology (CS)</option>
+                        <option>Civil Engineering (CE)</option>
+                        <option>Chemical Engineering (CH)</option>
+                        <option>Biotechnology (BT)</option>
+                        <option>Electronics and Communication Engineering (EC)</option>
+                        <option>Electrical Engineering (EE)</option>
+                        <option>Mechanical Engineering (ME)</option>
+                        <option>Mathematics (MA)</option>
+                        <option>Agricultural Engineering (AG)</option>
+                        <option>Naval Architecture and Marine Engineering (NM)</option>
+                    </select>
+
+                    <label>Upload GATE Certificate:</label>
+                    <input type="file" name="gate_certificate" accept=".pdf">
+
+                    <label>GATE Score (out of 1000):</label>
+                    <input type="number" name="gate_score" max="1000">
+                </div>
+            </fieldset>
+
+            <div class="button-center">
+                <button type="submit">Predict Company</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        function toggleGateFields(value) {
+            document.getElementById("gate_fields").style.display = (value === "Yes") ? "block" : "none";
+        }
+
+        // Prevent submission if CGPA is below 6
+        document.getElementById('predictionForm').addEventListener('submit', function(e) {
+            const cgpa = parseFloat(document.getElementById('cgpa').value);
+            if (cgpa < 6) {
+                alert("Your CGPA is soo weak");
+                e.preventDefault();
+            }
+        });
+
+        // Listen for aptitude score from test window
+        window.addEventListener("message", function(event) {
+            if (event.origin !== window.location.origin) return;
+            if (event.data.type === "APTITUDE_SCORE") {
+                const input = document.getElementById("aptitude_score");
+                if (input) input.value = event.data.score;
+            }
+        });
+    </script>
+</body>
+</html>
