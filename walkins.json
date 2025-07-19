@@ -1,0 +1,18 @@
+[
+  {
+    "company": "TCS",
+    "position": "Graduate Trainee",
+    "date": "2025-06-15",
+    "venue": "TCS, Hinjewadi, Pune",
+    "timings": "10:00 AM – 3:00 PM",
+    "details_link": "https://careers.tcs.com"
+  },
+  {
+    "company": "Wipro",
+    "position": "Software Engineer",
+    "date": "2025-06-18",
+    "venue": "Wipro Campus, Nagpur",
+    "timings": "9:00 AM – 5:00 PM",
+    "details_link": "https://careers.wipro.com"
+  }
+]
