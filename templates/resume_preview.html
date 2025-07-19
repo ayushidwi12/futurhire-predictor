@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Resume Preview</title>
+
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-image: url('{{ url_for('static', filename='images/resume_bg.jpg') }}');
+      background-size: cover;
+      background-attachment: fixed;
+      margin: 0;
+      padding: 40px;
+      color: #333;
+    }
+
+    .resume-container {
+      max-width: 800px;
+      margin: auto;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.15);
+    }
+
+    .resume-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .resume-header h1 {
+      margin: 0;
+      color: #2c3e50;
+    }
+
+    .section {
+      margin-bottom: 25px;
+    }
+
+    .section h2 {
+      color: #34495e;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 5px;
+      margin-bottom: 15px;
+    }
+
+    .section p, .section ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .section ul li::before {
+      content: "•";
+      color: #007bff;
+      font-weight: bold;
+      display: inline-block;
+      width: 1em;
+      margin-left: -1em;
+    }
+
+    .btn-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: #fff;
+      text-decoration: none;
+      border-radius: 6px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #43e97b, #38f9d7);
+      transform: scale(1.03);
+    }
+
+    @media print {
+      body {
+        background: none;
+        padding: 0;
+      }
+
+      .btn-group {
+        display: none;
+      }
+
+      .resume-container {
+        box-shadow: none;
+        background: white;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="resume-container" id="resume">
+    <div class="resume-header">
+      <h1>{{ name or 'Your Name' }}</h1>
+      <p>
+        {% if email %}<strong>Email:</strong> {{ email }}{% endif %}
+        {% if phone %} | <strong>Phone:</strong> {{ phone }}{% endif %}
+      </p>
+    </div>
+
+    {% if summary %}
+    <div class="section">
+      <h2>Professional Summary</h2>
+      <p>{{ summary }}</p>
+    </div>
+    {% endif %}
+
+    {% if skills %}
+    <div class="section">
+      <h2>Skills</h2>
+      <ul>
+        {% for skill in skills.split(',') %}
+        <li>{{ skill.strip() }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    {% endif %}
+
+    {% if education %}
+    <div class="section">
+      <h2>Education</h2>
+      <p>{{ education }}</p>
+    </div>
+    {% endif %}
+
+    {% if experience %}
+    <div class="section">
+      <h2>Experience</h2>
+      <p>{{ experience }}</p>
+    </div>
+    {% endif %}
+
+    {% if certifications %}
+    <div class="section">
+      <h2>Certifications</h2>
+      <p>{{ certifications }}</p>
+    </div>
+    {% endif %}
+
+    <div class="btn-group">
+      <a href="{{ url_for('home') }}" class="btn">← Back to Home</a>
+      <a href="#" class="btn" onclick="window.print()">Download as PDF</a>
+    </div>
+  </div>
+
+</body>
+</html>
