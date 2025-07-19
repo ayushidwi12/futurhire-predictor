@@ -1,0 +1,615 @@
+/* Global Styles */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #ffffff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  animation: backgroundAnimation 15s ease infinite;
+}
+
+/* Animation for all pages (except Home) */
+body:not(.home-page) {
+  background: linear-gradient(135deg, #fcebeb, #2e050d8f);
+  animation: backgroundAnimation 15s ease infinite;
+}
+
+@keyframes backgroundAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Headings */
+h1, h2 {
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.179);
+  animation: fadeInText 2s ease forwards;
+}
+
+@keyframes fadeInText {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Forms */
+body.form-page {
+    background-image: url('../images/pawel-czerwinski-gjf6lzfPROk-unsplash.jpg'); /* adjust the path as needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Optional: add an overlay */
+body.form-page::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* darkens the background for better contrast */
+    z-index: -1;
+}
+.form-wrapper {
+  max-width: 1000px;
+  width: 90%;
+  margin: 40px auto;
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+  color: #f1f1f1;
+}
+
+form fieldset {
+  border: 1px solid rgba(37, 2, 2, 0.471);
+  border-radius: 10px;
+  padding: 15px 20px;
+  margin-bottom: 20px;
+}
+
+form legend {
+  font-weight: bold;
+  padding: 0 10px;
+}
+
+form label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+form input, form select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.button-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+body.r1 {
+    background-image: url('../images/bhautik-patel-3YphJGjvoeY-unsplash.jpg'); /* adjust the path as needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Optional: add an overlay */
+body.r1::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* darkens the background for better contrast */
+    z-index: -1;
+}
+
+button[type="submit"] {
+  background: linear-gradient(135deg, #06a944, #0cd67b);
+  border: none;
+  width: 250px;
+  color: white;
+  padding: 14px 30px;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.4s ease-in-out;
+  box-shadow: 0 4px 20px rgba(6, 169, 68, 0.5);
+}
+
+button[type="submit"]::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255,255,255,0.2) 10%, transparent 10.01%);
+  background-size: 15px 15px;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+button[type="submit"]::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.2), transparent);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+  z-index: 0;
+}
+
+button[type="submit"]:hover {
+  transform: scale(1.08);
+  box-shadow: 0 8px 30px rgba(0, 3, 1, 0.8);
+}
+
+button[type="submit"]:hover::before {
+  opacity: 0.3;
+}
+
+button[type="submit"]:hover::after {
+  transform: translateX(100%);
+}
+
+
+
+form {
+  background: rgba(83, 40, 40, 0.524);
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.84);
+  width: 90%;                /* Wider form */
+  max-width: 800px;         /* Limit on large screens */
+  margin: 70px auto;         /* Center horizontally with margin */
+  animation: fadeInForm 2s ease forwards;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes fadeInForm {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+input[type="text"], input[type="password"], input[type="number"], textarea, input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  margin: 80px 50 15px 50;
+  border: none;
+  border-radius: 567px;
+  font-size: 16px;
+}
+
+button, .start-btn {
+  background-color: #0aa536;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  text-decoration: none;
+}
+
+button:hover, .start-btn:hover {
+  background-color: #5548c8;
+  box-shadow: 0 0 10px #5548c8;
+  transform: scale(1.05);
+}
+
+a {
+  color: #ffc107;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: #ffca28;
+  text-decoration: underline;
+}
+
+p {
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+.ats-options {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.ats-btn {
+  background: linear-gradient(135deg, #d86f18, #f7b733);
+  color: #ffffff;
+  font-weight: bold;
+  padding: 14px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 50px;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+}
+
+.ats-btn:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #ff9966, #ff5e62);
+  color: white;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+
+/* ================= HOME PAGE ONLY ================= */
+body.home-page {
+  overflow-x: hidden;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -1; /* Changed from -10 to -1 for smoother stacking */
+  opacity: 1.7;
+  pointer-events: none;
+}
+/* Headings & Text */
+h1 {
+  font-family: 'Poppins', sans-serif; /* Modern, clean font */
+  color: #94424a;
+  font-size: 3rem;
+  animation: fadeInText 2s ease forwards;
+  
+}
+h2 {
+  font-family: 'Playfair Display', serif; /* Elegant serif font */
+  text-shadow: 2px 2px 5px rgba(37, 2, 2, 0.346);
+  color: #000000;
+  text-align: left;
+  padding: 6px 14px;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 1.8rem;
+  animation: fadeInText 2s ease forwards;
+  margin-left: 20px;
+  margin-top: 10px;
+}
+
+p {
+  text-shadow: 2px 2px 5px rgba(247, 245, 245, 0.4);
+  color: #020000;
+  font-size: 1.2rem;
+  max-width: 700px;
+  margin: 0 auto 30px;
+  animation: fadeInText 2s ease forwards;
+}
+
+@keyframes fadeInText {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Start Prediction Button */
+.main-content a button {
+  background: linear-gradient(135deg, #1f4037, #99f2c8);
+  color: #000;
+  font-weight: bold;
+  font-size: 24px;
+  padding: 18px 40px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  animation: pulse 2.5s infinite;
+  transition: all 0.4s ease-in-out;
+}
+
+.main-content a button:hover {
+  transform: scale(1.08);
+  background: linear-gradient(135deg, #4facfe, #00f2fe);
+  color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Main Content Layout */
+.main-content {
+  padding-top: 120px; /* increased from 120px to avoid overlap */
+  text-align: center;
+}
+
+
+/* General Styles */
+a {
+  color: #d5c707;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: bold;
+  position: relative;
+  top: 0px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Black shadow */
+}
+
+a:hover {
+  color: #fdfeff;
+  text-decoration: underline;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.9); /* Stronger on hover */
+}
+
+
+button {
+  font-family: inherit;
+  top: 7px;
+}
+
+/* Optional: Add some layout balance */
+<nav class="navbar">
+    <div class="navbar-container">
+        <h2 class="logo">Hiring Predictor</h2>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('login') }}">Login</a></li>
+            <li><a href="{{ url_for('companies') }}">Companies</a></li>
+            <li><a href="{{ url_for('more_info') }}">More Info</a></li>
+        </ul>
+    </div>
+</nav>
+
+/* ========== result page ========== */
+
+/* ========== Global Styles ========== */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f5f5;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Header Styles */
+header {
+    background-color: #280f0fb6;
+    color: white;
+    padding: 30px;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.319);
+}
+
+h1 {
+    margin-bottom: 10px;
+    color: white;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.9);
+
+}
+
+.intro {
+    font-size: 0px;
+    margin-top: 0;
+    color: #ffffff(102, 59, 120);
+}
+
+/* Back to Home Button */
+.back-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #f39c12;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.back-link:hover {
+    background-color: #e67e22;
+}
+
+.job-opportunities {
+  margin-top: 50px;
+  background-color: rgba(38, 128, 119, 0.649);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.1);
+}
+
+.job-opportunities h2 {
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+.jobs-list {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.job-card {
+  background: #f0f4ff;
+  padding: 15px 20px;
+  border-radius: 8px;
+  width: 250px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.job-card h3 {
+  margin-top: 0;
+  color: #0056b3;
+}
+
+
+/* ========== Companies Section Styles ========== */
+.companies-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+body.companies-page {
+    background-image: url('../images/pawel-czerwinski-3vAAPFO1Txo-unsplash.jpg'); /* adjust the path as needed */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.company-card {
+    background-color: #4a333891;
+    padding: 20px;
+    width: 280px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 1.5s ease-in-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.company-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.699);
+}
+
+.company-card h2 {
+    font-size: 24px;
+    color:#fbfbfb;
+    margin-bottom: 15px;
+}
+
+.company-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.company-card ul li {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.apply-btn {
+    display: inline-block;
+    margin-top: 20px;
+    background-color: #3fa508;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.apply-btn:hover {
+    background-color:  #116f24;
+    color: white;
+    transform: scale(1.05);
+}
+
+/* Animation for fade-in */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+/* Home Page Role Cards Grid */
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 25px;
+    padding: 40px;
+    max-width: 1200px;
+    margin: 60px auto;
+}
+
+.role-card {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 15px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.role-card:hover {
+    transform: translateY(-10px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+}
+
+.role-card a {
+    color: white;
+    text-decoration: none;
+}
+
+.role-card h3 {
+    margin-top: 15px;
+    font-size: 1.3em;
+}
+
+.icon-placeholder {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ff8c00, #e52e71);
+    border-radius: 50%;
+    font-size: 2.2em;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 10px;
+    box-shadow: 0 4px 12px
