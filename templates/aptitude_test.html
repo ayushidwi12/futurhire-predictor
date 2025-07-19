@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Aptitude Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; max-width: 800px; margin: 30px auto; }
+        .question { margin-bottom: 20px; }
+        button { padding: 10px 20px; }
+    </style>
+</head>
+<body>
+    <h2>Aptitude Test (10 Questions)</h2>
+
+    <!-- Virtual Calculator -->
+    <div id="calculator" style="position:fixed; top:20px; right:20px; width:220px; background:#f1f1f1; border:1px solid #ccc; padding:10px; border-radius:8px; z-index:999;">
+        <h4>Calculator</h4>
+        <input type="text" id="calc-display" style="width:100%; padding:5px; font-size:16px; margin-bottom:10px;" readonly>
+        <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap:5px;">
+            <button onclick="calcInput('7')">7</button>
+            <button onclick="calcInput('8')">8</button>
+            <button onclick="calcInput('9')">9</button>
+            <button onclick="calcInput('/')">/</button>
+            <button onclick="calcInput('4')">4</button>
+            <button onclick="calcInput('5')">5</button>
+            <button onclick="calcInput('6')">6</button>
+            <button onclick="calcInput('*')">*</button>
+            <button onclick="calcInput('1')">1</button>
+            <button onclick="calcInput('2')">2</button>
+            <button onclick="calcInput('3')">3</button>
+            <button onclick="calcInput('-')">-</button>
+            <button onclick="calcInput('0')">0</button>
+            <button onclick="calcInput('.')">.</button>
+            <button onclick="calcClear()">C</button>
+            <button onclick="calcInput('+')">+</button>
+            <button onclick="calcCalculate()" style="grid-column: span 4; background-color: #28a745; color:white;">=</button>
+        </div>
+    </div>
+
+    <!-- Aptitude Quiz Form -->
+    <form id="quizForm">
+        {% for q in questions %}
+            {% set idx = loop.index0 %}
+            <div class="question">
+                <p><strong>Q{{ loop.index }}: {{ q.question }}</strong></p>
+                {% for option in q.options %}
+                    <label>
+                        <input type="radio" name="q{{ idx }}" value="{{ loop.index0 }}"> {{ option }}
+                    </label><br>
+                {% endfor %}
+                <input type="hidden" name="a{{ idx }}" value="{{ q.answer }}">
+            </div>
+        {% endfor %}
+        <button type="submit">Submit Test</button>
+    </form>
+
+    <!-- Score Calculation Script -->
+    <script>
+        document.getElementById("quizForm").onsubmit = function(e) {
+            e.preventDefault();
+            const form = e.target;
+            let score = 0;
+            for (let i = 0; i < 10; i++) {
+                const selected = form.querySelector(`input[name="q${i}"]:checked`);
+                const correct = form.querySelector(`input[name="a${i}"]`).value;
+                if (selected && selected.value === correct) {
+                    score++;
+                }
+            }
+            alert("You scored: " + score + "/10");
+
+            // Send score back to opener window (input.html)
+            if (window.opener) {
+                window.opener.postMessage({ type: "APTITUDE_SCORE", score }, window.location.origin);
+                window.close();
+            }
+        };
+    </script>
+
+    <!-- Calculator Script -->
+    <script>
+        function calcInput(val) {
+            document.getElementById('calc-display').value += val;
+        }
+
+        function calcClear() {
+            document.getElementById('calc-display').value = '';
+        }
+
+        function calcCalculate() {
+            try {
+                document.getElementById('calc-display').value = eval(document.getElementById('calc-display').value);
+            } catch {
+                document.getElementById('calc-display').value = "Error";
+            }
+        }
+    </script>
+</body>
+</html>
