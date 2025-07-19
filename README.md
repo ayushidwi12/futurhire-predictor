@@ -1,6 +1,6 @@
 # futurhire-predictor
 
-🚀 Smart Placement Predictor (SPPU Final Year Project)
+🚀 Smart Placement Predictor 
 A modern web application that uses machine learning to predict the top 3 companies most suitable for a student based on their academic and skill profile.
 
 🔎 Key Highlights
