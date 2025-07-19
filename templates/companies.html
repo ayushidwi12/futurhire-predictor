@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top Companies</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+   
+</head>
+<body class="companies-page">
+    <header>
+        <h1>Current Company Requirements</h1>
+        <p class="intro">Explore the list of top companies and their hiring criteria.</p>
+       <div class="button-center"> <a href="{{ url_for('home') }}" class="back-link">Back to Home</a></div>
+    </header>
+
+    <section class="companies-container">
+
+        <!-- Apple Inc. Section -->
+        <div class="company-card fade-in">
+            <h2>Apple Inc.</h2>
+            <p><strong>Industry:</strong> Technology</p>
+            <p><strong>Headquarters:</strong> Cupertino, California, USA</p>
+            <ul>
+                <li>Known for its premium product line including iPhone, iPad, and Mac.</li>
+                <li>Apple is a leader in innovation, particularly in hardware and software design.</li>
+                <li>Focus on creativity, product design, and seamless user experiences.</li>
+                <li>Hiring focus: Software engineers, hardware engineers, designers, and marketing professionals.</li>
+            </ul><div class="button-center">
+            <a href="https://www.apple.com/careers/" target="_blank" class="apply-btn">Apply to Apple</a></div>
+        </div>
+
+        <!-- Google (Alphabet) Section -->
+        <div class="company-card fade-in">
+            <h2>Google (Alphabet Inc.)</h2>
+            <p><strong>Industry:</strong> Technology</p>
+            <p><strong>Headquarters:</strong> Mountain View, California, USA</p>
+            <ul>
+                <li>Google is the world's leading search engine and has expanded into various fields like AI, cloud computing, and advertising.</li>
+                <li>Known for an inclusive and innovative workplace culture.</li>
+                <li>Offers opportunities in areas like software engineering, AI, product management, and sales.</li>
+                <li>Hiring focus: Software engineers, Data scientists, UX/UI designers, and Cloud experts.</li>
+            </ul><div class="button-center">
+            <a href="https://careers.google.com/" target="_blank" class="apply-btn">Apply to Google</a></div>
+        </div>
+
+        <!-- Microsoft Section -->
+        <div class="company-card fade-in">
+            <h2>Microsoft Corporation</h2>
+            <p><strong>Industry:</strong> Technology</p>
+            <p><strong>Headquarters:</strong> Redmond, Washington, USA</p>
+            <ul>
+                <li>Microsoft is a global leader in software, hardware, and cloud services.</li>
+                <li>Famous for Windows OS, Azure cloud platform, and Office suite.</li>
+                <li>The company values diversity, inclusion, and employee development.</li>
+                <li>Hiring focus: Cloud engineers, software developers, data scientists, and business analysts.</li>
+            </ul><div class="button-center">
+            <a href="https://careers.microsoft.com/us/en" target="_blank" class="apply-btn">Apply to Microsoft</a></div>
+        </div>
+
+        <!-- Amazon Section -->
+        <div class="company-card fade-in">
+            <h2>Amazon</h2>
+            <p><strong>Industry:</strong> E-commerce & Cloud Computing</p>
+            <p><strong>Headquarters:</strong> Seattle, Washington, USA</p>
+            <ul>
+                <li>Amazon is one of the world's largest e-commerce platforms and a major cloud services provider.</li>
+                <li>Known for its customer-first approach and fast-paced work environment.</li>
+                <li>Hiring focus: Operations managers, software engineers, logistics specialists, and data analysts.</li>
+            </ul><div class="button-center">
+            <a href="https://www.amazon.jobs/en/" target="_blank" class="apply-btn">Apply to Amazon</a></div>
+        </div>
+
+        <!-- Infosys Section (Top Indian Company) -->
+        <div class="company-card fade-in">
+            <h2>Infosys</h2>
+            <p><strong>Industry:</strong> Information Technology</p>
+            <p><strong>Headquarters:</strong> Bengaluru, Karnataka, India</p>
+            <ul>
+                <li>Infosys is a leading Indian IT services and consulting firm.</li>
+                <li>The company specializes in digital transformation, cloud computing, and AI solutions.</li>
+                <li>Infosys emphasizes continuous learning, innovation, and leadership development.</li>
+                <li>Hiring focus: Software developers, business analysts, and digital transformation specialists.</li>
+            </ul><div class="button-center">
+            <a href="https://www.infosys.com/careers.html" target="_blank" class="apply-btn">Apply to Infosys</a></div>
+        </div>
+
+        <!-- TCS Section (Top Indian Company) -->
+        <div class="company-card fade-in">
+            <h2>Tata Consultancy Services (TCS)</h2>
+            <p><strong>Industry:</strong> Information Technology</p>
+            <p><strong>Headquarters:</strong> Mumbai, Maharashtra, India</p>
+            <ul>
+                <li>TCS is one of the largest IT services companies in the world.</li>
+                <li>The company offers services in consulting, software development, and business process outsourcing.</li>
+                <li>TCS promotes a culture of work-life balance, diversity, and innovation.</li>
+                <li>Hiring focus: IT consultants, software engineers, project managers, and business analysts.</li>
+            </ul><div class="button-center">
+            <a href="https://www.tcs.com/careers" target="_blank" class="apply-btn">Apply to TCS</a></div>
+        </div>
+
+        <!-- Additional Companies (Global & Indian) -->
+        
+        <!-- IBM Section -->
+        <div class="company-card fade-in">
+            <h2>IBM</h2>
+            <p><strong>Industry:</strong> Technology & Consulting</p>
+            <p><strong>Headquarters:</strong> Armonk, New York, USA</p>
+            <ul>
+                <li>IBM is a global leader in AI, cloud computing, and consulting services.</li>
+                <li>Known for developing Watson, the AI-powered cognitive system.</li>
+                <li>Hiring focus: Cloud architects, AI engineers, software developers, and data scientists.</li>
+            </ul>
+            <a href="https://www.ibm.com/employment" target="_blank" class="apply-btn">Apply to IBM</a>
+        </div>
+
+        <!-- Facebook (Meta) Section -->
+        <div class="company-card fade-in">
+            <h2>Meta (Facebook)</h2>
+            <p><strong>Industry:</strong> Social Media & Technology</p>
+            <p><strong>Headquarters:</strong> Menlo Park, California, USA</p>
+            <ul>
+                <li>Meta, formerly Facebook, is a leader in social media platforms and virtual reality.</li>
+                <li>Known for developing platforms like Facebook, Instagram, and Oculus.</li>
+                <li>Hiring focus: Software engineers, data scientists, VR developers, and content creators.</li>
+            </ul>
+            <a href="https://www.metacareers.com/" target="_blank" class="apply-btn">Apply to Meta</a>
+        </div>
+
+        <!-- Oracle Section -->
+        <div class="company-card fade-in">
+            <h2>Oracle Corporation</h2>
+            <p><strong>Industry:</strong> Software & Cloud Computing</p>
+            <p><strong>Headquarters:</strong> Austin, Texas, USA</p>
+            <ul>
+                <li>Oracle is a multinational corporation specializing in database software and cloud computing.</li>
+                <li>Known for Oracle Database, one of the most powerful database management systems.</li>
+                <li>Hiring focus: Database administrators, cloud engineers, and software developers.</li>
+            </ul>
+            <a href="https://www.oracle.com/corporate/careers/" target="_blank" class="apply-btn">Apply to Oracle</a>
+        </div>
+
+        <!-- SAP Section -->
+        <div class="company-card fade-in">
+            <h2>SAP</h2>
+            <p><strong>Industry:</strong> Software & Enterprise Solutions</p>
+            <p><strong>Headquarters:</strong> Walldorf, Germany</p>
+            <ul>
+                <li>SAP is a leader in enterprise software and solutions for business operations.</li>
+                <li>Known for its ERP software used by companies globally.</li>
+                <li>Hiring focus: ERP consultants, software engineers, business analysts, and solution architects.</li>
+            </ul>
+            <a href="https://www.sap.com/about/careers.html" target="_blank" class="apply-btn">Apply to SAP</a>
+        </div>
+
+        <!-- Deloitte Section -->
+        <div class="company-card fade-in">
+            <h2>Deloitte</h2>
+            <p><strong>Industry:</strong> Consulting & Professional Services</p>
+            <p><strong>Headquarters:</strong> London, UK</p>
+            <ul>
+                <li>Deloitte is one of the largest consulting firms offering audit, tax, and advisory services.</li>
+                <li>Known for offering strategic consulting to top global companies.</li>
+                <li>Hiring focus: Business consultants, tax advisors, auditors, and analysts.</li>
+            </ul>
+            <a href="https://www2.deloitte.com/global/en/careers.html" target="_blank" class="apply-btn">Apply to Deloitte</a>
+        </div>
+
+        <!-- Accenture Section -->
+        <div class="company-card fade-in">
+            <h2>Accenture</h2>
+            <p><strong>Industry:</strong> Consulting & Professional Services</p>
+            <p><strong>Headquarters:</strong> Dublin, Ireland</p>
+            <ul>
+                <li>Accenture is a global consulting firm that provides services in strategy, technology, and operations.</li>
+                <li>Known for its leadership in technology-driven solutions and digital transformation.</li>
+                <li>Hiring focus: IT consultants, data analysts, cloud experts, and digital consultants.</li>
+            </ul>
+            <a href="https://www.accenture.com/us-en/careers" target="_blank" class="apply-btn">Apply to Accenture</a>
+        </div>
+
+        <!-- Cisco Systems Section -->
+        <div class="company-card fade-in">
+            <h2>Cisco Systems</h2>
+            <p><strong>Industry:</strong> Technology</p>
+            <p><strong>Headquarters:</strong> San Jose, California, USA</p>
+            <ul>
+                <li>Cisco is a global leader in networking and cybersecurity solutions.</li>
+                <li>Known for creating industry-leading hardware and software for network connectivity.</li>
+                <li>Hiring focus: Network engineers, cybersecurity specialists, software developers.</li>
+            </ul>
+            <a href="https://www.cisco.com/c/en/us/about/careers.html" target="_blank" class="apply-btn">Apply to Cisco</a>
+        </div>
+
+        <!-- Capgemini Section -->
+        <div class="company-card fade-in">
+            <h2>Capgemini</h2>
+            <p><strong>Industry:</strong> IT Services & Consulting</p>
+            <p><strong>Headquarters:</strong> Paris, France</p>
+            <ul>
+                <li>Capgemini is a global leader in consulting, technology services, and digital transformation.</li>
+                <li>Known for providing innovative IT solutions to clients worldwide.</li>
+                <li>Hiring focus: IT consultants, software engineers, digital transformation specialists.</li>
+            </ul>
+            <a href="https://www.capgemini.com/careers/" target="_blank" class="apply-btn">Apply to Capgemini</a>
+        </div>
+
+    </section>
+
+</body>
+</html>
