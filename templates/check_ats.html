@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ATS Compatibility Checker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+    background: url("{{ url_for('static', filename='images/pawel-czerwinski-rc9ZkXFNscI-unsplash.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .overlay {
+      background-color: rgba(109, 182, 218, 0.617);
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+      padding: 40px;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    h2 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      margin-bottom: 5px;
+      display: block;
+      color: #444;
+    }
+
+    input[type="file"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      background: #fff;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+      color: white;
+      font-weight: 600;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 242, 254, 0.4);
+    }
+
+    .btn:hover {
+      background: linear-gradient(135deg, #00c6ff 0%, #0072ff 100%);
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px rgba(0, 114, 255, 0.5);
+    }
+
+    .ats-result {
+      background: #f1f9ff;
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 25px;
+      border-left: 5px solid #007bff;
+    }
+
+    .ats-result p {
+      margin: 8px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay">
+    <h2>ATS Compatibility Checker</h2>
+
+    <form action="/check_ats" method="POST" enctype="multipart/form-data">
+      <div class="form-group">
+        <label for="resume_file">Upload Resume (PDF/DOCX):</label>
+        <input type="file" name="resume_file" required>
+      </div>
+      <button type="submit" class="btn">🚀 Analyze Resume</button>
+    </form>
+
+    {% if ats_result %}
+    <div class="ats-result">
+      <h3>🔍 ATS Result</h3>
+      <p><strong>Name:</strong> {{ ats_result.name }}</p>
+      <p><strong>Email:</strong> {{ ats_result.email }}</p>
+      <p><strong>Skills:</strong> {{ ats_result.skills | join(', ') }}</p>
+      <p><strong>Education:</strong> {{ ats_result.education }}</p>
+      <p><strong>ATS Score:</strong> {{ ats_result.score }}%</p>
+      <p><strong>Formatting:</strong> {{ ats_result.formatting }}</p>
+    </div>
+    {% endif %}
+  </div>
+</body>
+</html>
