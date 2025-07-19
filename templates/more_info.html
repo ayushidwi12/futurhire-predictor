@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>More Info - Hiring Predictor</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url("{{ url_for('static', filename='images/pawel-czerwinski-fahoKISAg08-unsplash.jpg') }}") no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
+      animation: backgroundAnimation 15s ease infinite;
+    }
+
+    @keyframes backgroundAnimation {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h1, h2 {
+      text-align: center;
+      margin-top: 30px;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    p, ul {
+      text-align: center;
+      max-width: 800px;
+      margin: 10px auto;
+      font-size: 1.1rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    ul li::before {
+      content: "• ";
+      color: #fbc02d;
+      font-size: 1.2rem;
+    }
+
+    .team-section {
+      padding: 50px 20px;
+      background: rgba(0, 0, 0, 0.5);
+      margin-top: 40px;
+    }
+
+    .team-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .team-member {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      width: 220px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+      animation: fadeInUp 1.5s ease forwards;
+      backdrop-filter: blur(6px);
+    }
+
+    .team-member img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      margin-bottom: 15px;
+    }
+
+    .team-member h3 {
+      margin: 10px 0 5px;
+      color: #fbc02d;
+    }
+
+    .team-member p {
+      margin: 5px 0;
+      font-style: italic;
+      color: #ddd;
+    }
+
+    .social-links a {
+      margin: 0 10px;
+      color: #fbc02d;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s ease;
+    }
+
+    .social-links a:hover {
+      color: #ffffff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    a.back-home {
+      display: inline-block;
+      margin: 30px auto;
+      text-align: center;
+      background-color: #fbc02d;
+      padding: 12px 25px;
+      border-radius: 8px;
+      color: #000;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    a.back-home:hover {
+      background-color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <h1>Our Vision</h1>
+  <p>We aim to transform the hiring landscape using AI-powered prediction systems, enabling efficient, fair, and data-driven recruitment processes.</p>
+
+  <h2>Future Features</h2>
+  <ul>
+    <li>AI-Powered Resume Screening</li>
+    <li>Skill Gap Analysis with Learning Suggestions</li>
+    <li>Real-Time Analytics for Recruiters</li>
+    <li>Candidate Engagement Chatbot</li>
+  </ul>
+
+  <section class="team-section">
+    <h2>Meet the Team</h2>
+    <div class="team-container">
+      <div class="team-member">
+        <img src="{{ url_for('static', filename='images/sarthak.jpg') }}" alt="Member 1">
+        <h3>Sarthak Gore</h3>
+        <p>Project Lead</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/sarth.72_" target="_blank">Instagram</a>
+          <a href="https://linkedin.com/in/johndoe" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <div class="team-member">
+        <img src="{{ url_for('static', filename='images/ram.jpg') }}" alt="Member 2">
+        <h3>Rameshwar Patare</h3>
+        <p>Data Scientist</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/_rameshwar_patare_patil" target="_blank">Instagram</a>
+          <a href="https://linkedin.com/in/janesmith" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+       <div class="team-member">
+        <img src="{{ url_for('static', filename='images/sam.jpg') }}" alt="Member 2">
+        <h3>Samiksha Kanawade</h3>
+        <p>front end Devloper</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/samayraa_12_k" target="_blank">Instagram</a>
+          <a href="https://linkedin.com/in/janesmith" target="_blank">LinkedIn</a>
+        </div>
+
+      </div>
+      <div class="team-member">
+        <img src="{{ url_for('static', filename='images/sanika.jpg') }}" alt="Member 2">
+        <h3>Sanika Gurde</h3>
+        <p>DevOPs Engineer</p>
+        <div class="social-links">
+          <a href="https://www.instagram.com/sanika_gurde" target="_blank">Instagram</a>
+          <a href="https://linkedin.com/in/" target="_blank">LinkedIn</a>
+        </div>
+      </div>
+
+      <!-- Add more team members similarly -->
+    </div>
+  </section>
+
+  <a class="back-home" href="{{ url_for('home') }}">⬅ Back to Home</a>
+</body>
+</html>
