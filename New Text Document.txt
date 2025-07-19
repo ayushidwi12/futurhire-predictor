@@ -1,0 +1,12 @@
+resume_text,required_skills,cgpa,aptitude_score,college_tier,company_name
+"Experienced in Python, Java, and backend development.","Python, Java, Flask",8.5,9,IIT,Google
+"Skilled in frontend, HTML, CSS, JavaScript.","HTML, CSS, JavaScript",7.9,8,NIT,Microsoft
+"Machine learning and data science projects using Python.","Python, Pandas, ML",9.2,10,IIT,Amazon
+"Knowledge in computer networks and C programming.","C, Networking",7.0,7,SPPU,Cisco
+"Proficient in DBMS and SQL, some knowledge of Java.","SQL, DBMS, Java",6.8,6,Mumbai University,Infosys
+"Familiar with UI design and ReactJS.","ReactJS, CSS",8.2,7,NIT,TCS
+"Experience in data structures and Java.","Java, DSA",9.0,9,IIT,Google
+"Basics of programming and problem solving.","Python, C++",6.5,5,Other,Wipro
+"Developed minor projects in web and mobile apps.","HTML, JavaScript, Flutter",7.2,6,SPPU,Capgemini
+"Python scripting and automation skills.","Python, Selenium",8.0,8,Mumbai University,Cognizant
+"Core Java, OOPs, and basic Spring knowledge.","Java, OOP, Spring",8.8,9,NIT,Oracle
